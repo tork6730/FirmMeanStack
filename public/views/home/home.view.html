@@ -1,7 +1,100 @@
-<h1>Home</h1>
+<h1><center>Home</center></h1>
 
-<span ng-show="currentUser">
-  
-Welcome {{currentUser.username}}
+<span ng-show="currentUser" ng-hide="currentUser.roles.indexOf('admin') != -1">
 
+    <div class="col-md-12">
+        <div class="panel panel-default">
+
+            <div class="panel-heading">
+                <h1>Notifications</h1>
+            </div>
+
+            <div class="panel-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Event</th>
+                            <th>Case</th>
+                            <th>Action Needed</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+    <div>
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h1>Recents Activity</h1>
+                </div>
+
+                <div class="panel-body">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Cases</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <form class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h1>Contact Us</h1>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Subject</label>
+                        <input type="text" class="form-control" id="subjectInput" placeholder="What can we help you with?">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Explain</label>
+                        <textarea type="text" class="form-control" rows="3" placeholder="Please Explain..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputFile">File input</label>
+                        <input type="file" id="exampleInputFile">
+                    </div>
+                    <div class="form-group pull-right">
+                        <label for="">Choose a Attorney</label>
+                        <select></select>
+                    </div>
+                        <button type="submit" class="btn btn-default align-right">Submit</button>
+                    <div class="checkbox pull pull-right">
+                        <label>
+                            <input type="checkbox"> Would you like an email copy of this message?
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+</span>
+
+<span ng-show="currentUser.roles.indexOf('admin') != -1">
+
+                  <h1>TESTING FOR ADMIN TO SEE ONLY</h1>
 </span>

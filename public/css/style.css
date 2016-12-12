@@ -1,3 +1,23 @@
-.form-control, .btn-block {
+.form-control, .btn-block
+{
     margin-bottom: 10px;
+}
+
+a
+{
+    color: white;
+}
+
+
+/*.errorLabel*/
+/*{*/
+    /*font-size: larger;*/
+    /*!*color: lightcoral;*!*/
+    /*text-align: center;*/
+    /*background-color: lightcoral;*/
+/*}*/
+
+.inputError
+{
+    background-color: lightcoral;
 }

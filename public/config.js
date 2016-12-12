@@ -1,12 +1,13 @@
 (function() {
     angular.module("PassportApp")
         .config(function($routeProvider, $httpProvider) {
+
             $routeProvider
               .when('/home', {
                   templateUrl: 'views/home/home.view.html',
                   controller: 'HomeController',
                   resolve: {
-                      loggedin: checkCurrentUser
+                      loggedin: checkLoggedin
                   }
               })
               .when('/profile', {
@@ -16,28 +17,50 @@
                       loggedin: checkLoggedin
                   }
               })
-              .when('/admin', {
-                  templateUrl: 'views/admin/admin.view.html',
-                  controller: 'AdminController',
-                  resolve: {
+                .when('/messages', {
+                    templateUrl: 'views/messages/messages.view.html',
+                    controller: 'MessagesCtrl',
+                    resolve: {
+                        loggedin: checkLoggedin
+                    }
+                })
+                .when('/documents', {
+                    templateUrl: 'views/documents/documents.view.html',
+                    controller: 'DocumentsCtrl',
+                    resolve: {
+                        loggedin: checkLoggedin
+                    }
+                })
+                .when('/cases', {
+                    templateUrl: 'views/cases/cases.view.html',
+                    controller: 'CasesCtrl',
+                    resolve: {
+                        loggedin: checkLoggedin
+                    }
+                })
+                .when('/admin', {
+                    templateUrl: 'views/admin/admin.view.html',
+                    controller: 'AdminController',
+                    resolve: {
                       loggedin: checkAdmin
-                  }
-              })
-              .when('/login', {
-                  templateUrl: 'views/login/login.view.html',
-                  controller: 'LoginCtrl',
-                  controllerAs: 'model'
-              })
-              .when('/register', {
-                  templateUrl: 'views/register/register.view.html',
-                  controller: 'RegisterCtrl',
-                  controllerAs: 'model'
-              })
-              .otherwise({
-                  redirectTo: '/home'
-              });
+                    }
+                })
+                .when('/login', {
+                    templateUrl: 'views/login/login.view.html',
+                    controller: 'LoginCtrl',
+                    controllerAs: 'model'
+                    })
+                .when('/register', {
+                    templateUrl: 'views/register/register.view.html',
+                    controller: 'RegisterCtrl',
+                    controllerAs: 'model'
+                    })
+                .otherwise({
+                    redirectTo: '/home'
+                    });
         });
     
+
     var checkAdmin = function($q, $timeout, $http, $location, $rootScope)
     {
         var deferred = $q.defer();
@@ -45,6 +68,7 @@
         $http.get('/api/loggedin').success(function(user)
         {
             $rootScope.errorMessage = null;
+
             // User is Authenticated
             if (user !== '0' && user.roles.indexOf('admin') != -1)
             {
@@ -64,6 +88,7 @@
         $http.get('/api/loggedin').success(function(user)
         {
             $rootScope.errorMessage = null;
+
             // User is Authenticated
             if (user !== '0')
             {
@@ -89,6 +114,7 @@
         $http.get('/api/loggedin').success(function(user)
         {
             $rootScope.errorMessage = null;
+
             // User is Authenticated
             if (user !== '0')
             {

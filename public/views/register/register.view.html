@@ -1,10 +1,15 @@
-<h1>Register</h1>
+<center><h1>Register</h1></center>
 
-{{error}}
-
-<input  ng-model="user.username"  class="form-control" placeholder="username"/>
-<input  ng-model="user.password"  class="form-control" placeholder="password"       type="password"/>
-<input  ng-model="user.password2" class="form-control" placeholder="password again" type="password"/>
-<button ng-click="register(user)" class="btn btn-primary btn-block">Register</button><br/>
+<div ng-if="error" class="alert alert-danger col-lg-4 col-lg-offset-4 text-center">
+    <label>{{error}}</label>
+</div>
+<div class="col-xs-6 col-xs-offset-3">
+<input  ng-model="user.firstName"  ng-keypress="keypress( $event )" type="text"  class="form-control" placeholder="First Name"/>
+<input  ng-model="user.lastName"  ng-keypress="keypress( $event )" type="text"  class="form-control" placeholder="Last Name"/>
+<input  id="username" ng-model="user.username"  ng-keypress="keypress( $event )" type="email"  ng-blur="checkEmailAvailable()" name="email" class="form-control" placeholder="Username/Email"/>
+<input  ng-model="user.password"  ng-keypress="keypress( $event )" class="form-control" placeholder="Password" type="password"/>
+<input  ng-model="user.confirmPassword" ng-keypress="keypress( $event )" class="form-control" placeholder="Password again" type="password"/>
+<button ng-click="register()" class="btn btn-primary btn-block">Register</button><br/>
 
 {{message}}
+</div>
